@@ -100,7 +100,7 @@ const registerUser = asyncHandler(async (req, res) => {
     if (!createdUser) {
         throw new ApiError(
             500,
-            "Somtjing went wrong while registering the user"
+            "Somthing went wrong while registering the user"
         );
     }
 
@@ -197,8 +197,8 @@ const logoutUser = asyncHandler(async (req, res) => {
 const refreshAccessToken = asyncHandler(async(req, res) => {
     const incomingRefreshToken = req.cookie.refreshToken || req.body.refreshToken
 
-    if (incomingRefreshToken) {
-        throw new ApiError(401, "unauthorizedRequest")
+    if (!incomingRefreshToken) {
+        throw new ApiError(401, "unauthorized Request")
     }
 
     try {
